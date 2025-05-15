@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Management</title>
+</head>
+<body>
+  <h2>Retrieve Student Info</h2>
+  <form action="/get-student" method="POST">
+    <label>ID:</label>
+    <input type="number" name="id" required>
+    <button type="submit">Get Info</button>
+  </form>
+
+  <h2>Delete Student</h2>
+  <form action="/delete-student" method="POST">
+    <label>ID:</label>
+    <input type="number" name="id" required>
+    <button type="submit">Delete</button>
+  </form>
+</body>
+</html>

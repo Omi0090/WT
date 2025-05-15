@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+</head>
+<body>
+    <h1>All Students</h1>
+    <table border="1" id="studentsTable">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Email</th><th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        fetch('/students')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('#studentsTable tbody');
+                data.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${student.phone}</td>
+                        <td>${student.dob}</td>
+                        <td>
+                            <form action="/delete/${student.id}" method="POST" onsubmit="return confirm('Delete student?');">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            });
+    </script>
+</body>
+</html>
